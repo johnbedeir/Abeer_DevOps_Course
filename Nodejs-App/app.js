@@ -3,7 +3,7 @@ const app = express();
 
 // Define a route for '/'
 app.get('/', (req, res) => {
-  res.send('Hello, Docker with Node.js!');
+  res.send('Hello, Ansible Playbook with Node.js!');
 });
 
 // Start the server
