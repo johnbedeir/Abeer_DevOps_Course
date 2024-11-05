@@ -1,10 +1,5 @@
 pipeline {
-    agent{
-      docker {
-        image 'docker:latest'
-        args '--privileged'
-      }
-    }
+    agent any
     
     environment {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials') // Docker Hub credentials ID from Jenkins
