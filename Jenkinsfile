@@ -16,8 +16,8 @@ pipeline {
             steps {
                 script {
                     sh '''
-                      apt-get update
-                      apt-get install -y docker.ce
+                        apt-get update
+                        apt-get install -y docker.ce
                     '''
                 }
             }
