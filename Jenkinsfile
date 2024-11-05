@@ -1,9 +1,9 @@
 pipeline {
-    agent {
-        docker {
-            image 'docker:latest'   // Runs the pipeline in a Docker container with Docker installed
-            args '--privileged'     // Allows Docker commands to run within the container
-        }
+    agent{
+      docker {
+        image 'docker:latest'
+        args '--privileged'
+      }
     }
     
     environment {
