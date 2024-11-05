@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+      docker {
+        image 'ubuntu:latest'
+        args '--privileged'
+      }
+    }
     
     environment {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials') // Docker Hub credentials ID from Jenkins
@@ -11,6 +16,19 @@ pipeline {
                 checkout scm
             }
         }
+
+        stage('Install Docker') {
+            steps {
+                script {
+                    // Update packages and install Docker
+                    sh '''
+                        apt-get update
+                        apt-get install -y docker.io
+                    '''
+                }
+            }
+        }
+
 
         stage('Build Docker Image') {
             steps {
