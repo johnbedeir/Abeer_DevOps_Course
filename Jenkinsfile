@@ -16,8 +16,8 @@ pipeline {
             steps {
                 script {
                     sh '''
-                      sudo apt update
-                      sudo apt install -y docker.io
+                      apt update
+                      apt install -y docker.io
                     '''
                 }
             }
