@@ -15,10 +15,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh '''
-                      cd Python-App
-                      docker build -t triple3a/abeer_python_app .
-                    '''
+                    sh "docker build -t triple3a/abeer_python_app ./Python-App/ -f Dockerfile"
                 }
             }
         }
