@@ -1,0 +1,27 @@
+version: "3"
+services:
+  # MongoDB Service
+  mongo:
+    image: mongo:6.0
+    container_name: mongo
+    ports:
+      - "27017:27017" # Expose MongoDB port
+    volumes:
+      - mongo-data:/data/db # Persist MongoDB data
+
+  # Node.js Service
+  nodeapp:
+    build: .
+    container_name: nodeapp
+    ports:
+      - "5000:5000" # Expose Node.js app port
+    depends_on:
+      - mongo # Ensure MongoDB starts before the Node app
+    environment:
+      MONGO_URL: mongodb://mongo:27017/testdb
+    volumes:
+      - .:/usr/src/app
+
+# Volumes for persisting MongoDB data
+volumes:
+  mongo-data:
